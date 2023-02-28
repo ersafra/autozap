@@ -4,11 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -64,47 +61,17 @@ fun Navigation(navController: NavHostController) {
         composable(NavigationItem.Home.route) {
             HomeScreen()
         }
-        composable(NavigationItem.Music.route) {
+        composable(NavigationItem.Divida.route) {
             ShareScreen()
         }
-        composable(NavigationItem.Movies.route) {
+        composable(NavigationItem.Avalie.route) {
             AssessScreen()
         }
-        composable(NavigationItem.About.route) {
+        composable(NavigationItem.Sobre.route) {
             AboutScreen()
         }
     }
 }
-
-
-@Composable
-fun SampleTopBar() {
-    Column {
-        TopAppBar(
-            //elevation = 4.dp,
-            title = { Text(text = stringResource(R.string.app_name), fontSize = 18.sp) },
-            //backgroundColor =  MaterialTheme.colors.primarySurface,
-            backgroundColor = colorResource(id = R.color.color_teste2),
-            contentColor = Color.White,
-//            navigationIcon = {
-//                IconButton(onClick = {/* Do Something*/ }) {
-//                    Icon(Icons.Filled.ArrowBack, null)
-//                }
-            //        },
-            actions = {
-//                IconButton(onClick = {/* Do Something*/ }) {
-//                    Icon(Icons.Filled.Share, null)
-//                }
-                IconButton(onClick = { }) {
-                    Icon(Icons.Filled.Info, null)
-                }
-            })
-
-        // Text("Hello World")
-
-    }
-}
-
 @Composable
 fun TopBar() {
     TopAppBar(
@@ -113,20 +80,18 @@ fun TopBar() {
         contentColor = Color.White
     )
 }
-
 @Preview(showBackground = true)
 @Composable
 fun TopBarPreview() {
     TopBar()
 }
-
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         NavigationItem.Home,
-        NavigationItem.Music,
-        NavigationItem.Movies,
-        NavigationItem.About,
+        NavigationItem.Divida,
+        NavigationItem.Avalie,
+        NavigationItem.Sobre,
     )
     BottomNavigation(
         backgroundColor = colorResource(id = R.color.color_teste2),

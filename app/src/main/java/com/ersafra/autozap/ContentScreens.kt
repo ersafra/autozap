@@ -4,17 +4,14 @@ package com.ersafra.autozap
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -22,54 +19,35 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-
-
 import java.util.*
 
 
 @Composable
 fun HomeScreen() {
     Column(
-        modifier = Modifier.run {
+        modifier = Modifier.run{
             fillMaxSize()
-                 .wrapContentSize(Alignment.Center)
-        }
+            .wrapContentSize(Alignment.Center)}
     ) {
         WhatsAppCorrect()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    HomeScreen()
-}
-
 @Composable
 fun ShareScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            //.background(colorResource(id = R.color.colorPrimaryDark))
             .wrapContentSize(Alignment.Center)
     ) {
-        //Chamar aqui a função
+
     }
 
 }
-
-@Preview(showBackground = true)
-@Composable
-fun ShareScreenPreview() {
-    //Chamar aqui a função
-}
-
 @Composable
 fun AssessScreen() {
     Column(
@@ -80,13 +58,6 @@ fun AssessScreen() {
         WebAssess()
     }
 }
-
-@Preview(showBackground = true)
-@Composable
-fun AssessScreenPreview() {
-    AssessScreen()
-}
-
 @Composable
 fun AboutScreen() {
     Column(
@@ -98,13 +69,6 @@ fun AboutScreen() {
 
     AboutAutoZap()
 }
-
-@Preview(showBackground = true)
-@Composable
-fun AboutScreenPreview() {
-    AboutScreen()
-}
-
 @Composable
 fun WebAssess() {
     val context = LocalContext.current
@@ -114,7 +78,6 @@ fun WebAssess() {
     )
     context.startActivity(webIntent)
 }
-
 @Composable
 fun BannerAdView() {
     AndroidView(
@@ -129,8 +92,6 @@ fun BannerAdView() {
         }
     )
 }
-
-// vamos mudar daqui para baixo--//
 @Composable
 fun WhatsAppCorrect() {
     val context = LocalContext.current
@@ -208,7 +169,6 @@ fun WhatsAppCorrect() {
 
 }
 enum class WhatsAppApi { WhatsApp, WhatsAppBusiness }
-
 private fun WhatsAppOpen(
     api: WhatsAppApi,
     phoneNumber: String,
@@ -220,16 +180,14 @@ private fun WhatsAppOpen(
 
     val horaAtual = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
     val messageTextOne = when (horaAtual) {
-        in 0..11 -> "Bom dia !"
-        in 12..17 -> "Boa tarde !"
-        else -> "Boa noite !"
+        in 0..11 -> "Bom dia!"
+        in 12..17 -> "Boa tarde!"
+        else -> "Boa noite!"
     }
     val url = "https://api.whatsapp.com/send?phone=55$phoneNumber&text=$messageTextOne$messageText"
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).setPackage(apiPackage)
     context.startActivity(intent)
 }
-
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AboutAutoZap() {
     val mContext = LocalContext.current
@@ -256,16 +214,16 @@ fun AboutAutoZap() {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).setPackage("com.whatsapp")
                 mContext.startActivity(intent)
             },
-            border = BorderStroke(1.dp, Color.Gray),
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0XFF0F9D58)),
+            //border = BorderStroke(1.dp, Color.Gray),
             modifier = Modifier.padding(8.dp)
         ) {
-            Icon(
-                imageVector = Icons.Default.Send,
-                contentDescription = null,
-                modifier = Modifier.padding(end = 4.dp)
-            )
-            Text(text = "WhatsApp")
-
+//            Icon(
+//                imageVector = Icons.Default.Send,
+//                contentDescription = null,
+//                modifier = Modifier.padding(end = 4.dp)
+ //           )
+            Text(text = "WhatsApp",color = Color.White)
         }
     }
 }
